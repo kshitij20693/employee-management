@@ -32,14 +32,7 @@ class Employee extends Model
         return true;
   	}
 
-  	public function deleteOldFile($model)
-    {
-        $uploadManager = new FileUploads;
-        $fileName   = $model->photo;
-        $filePath   = $uploadManager->setBasePath("images");
-        $file       = $filePath->filePath.DIRECTORY_SEPARATOR.$fileName;
-        return $uploadManager->deleteFile($file);
-    }
+  	
 
     public function uploadImage($input)
     {

@@ -15,7 +15,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add New Product') }}</div>
+                <div class="card-header">{{ __('Add New Employee') }}</div>
                 <div class="pull-right">
                   <a class="btn btn-primary" href="{{ route('employee.index') }}"> Back</a>
                 </div>
@@ -87,7 +87,7 @@
                     <label for="salary" class="col-sm-4 col-form-label text-md-right">{{ __('DOB') }}</label>
 
                     <div class="col-md-6">
-                      <input id="datepicker" type="text" class="form-control dob {{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}" required autofocus>
+                      <input id="datepicker" type="text" class="form-control dob {{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}" required autofocus autocomplete="off">
                       @if ($errors->has('dob'))
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $errors->first('dob') }}</strong>
