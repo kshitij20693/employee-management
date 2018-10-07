@@ -154,8 +154,9 @@ class EmployeeController extends Controller
                      ->join('departments', 'employees.department_id', '=', 'departments.id')
                      ->where('employees.status', '1')
                      ->groupBy('departments.id')
+                     ->orderBy('employees.dob')
                      ->get();
-
+        //dd($highest_salary_employee_datas);
         return view('employee.statistics',compact('employees','employees_datas','highest_salary_employee_datas'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
