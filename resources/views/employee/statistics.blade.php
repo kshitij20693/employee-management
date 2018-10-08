@@ -56,7 +56,7 @@
     </div>      
     @endif
     <h5>
-         Find the name and age of the youngest employee in each department.
+         Department wise highest salary of employees.
     </h5>
     @if(count($highest_salary_employee_datas) > 0)
     <table class="table table-bordered">

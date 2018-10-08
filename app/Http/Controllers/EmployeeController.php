@@ -152,11 +152,10 @@ class EmployeeController extends Controller
         $employees_datas = DB::table('employees')
                      ->select(DB::raw('CEIL(DATEDIFF(CURDATE(), employees.dob) / 365) as age'),'departments.name as department','employees.name as name')
                      ->join('departments', 'employees.department_id', '=', 'departments.id')
-                     ->where('employees.status', '1')
-                     ->groupBy('departments.id')
-                     ->orderBy('employees.dob')
+                     ->whereIn('dob', function($query) {
+                        $query->select(DB::raw('MAX(dob) AS dob'))->from('employees')
+                     ->join('departments', 'employees.department_id', '=', 'departments.id')->groupBy('departments.id');})
                      ->get();
-        //dd($highest_salary_employee_datas);
         return view('employee.statistics',compact('employees','employees_datas','highest_salary_employee_datas'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
